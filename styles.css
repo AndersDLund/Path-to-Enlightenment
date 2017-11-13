@@ -1,0 +1,19 @@
+h1 {
+  display: flex;
+  justify-content: center;
+  background-color: blanchedalmond;
+}
+.col-sm-4 h1 {
+  display: flex;
+  align-items: : center;
+padding-left: 20%;
+border: 1px solid black;
+height: 100px;
+width: auto;
+
+}
+.col-sm-8 {
+  border: 1px solid black;
+  height: auto;
+  width: auto;
+}
