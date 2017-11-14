@@ -5,24 +5,10 @@ let body = $('body');
 let button = $('button');
 let quoteArea = $('#quoteArea');
 
-let lifeCounter = 3;
-console.log(lifeCounter);
-
 var state, robo, love, nicks, chimes, exit, player, dungeon,
     Ghandi, healthBar, message, gameScene, gameOverScene, enemies, id, apiQuote;
 
-//----------------------------------------------------------------------------
-//------------------------------API-------------------------------------------
-//----------------------------------------------------------------------------
 
-var $xhr = $.getJSON('https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?');
-
-$xhr.done(function(data) {
-    if ($xhr.status !== 200) {
-        return;
-    }
-    quoteArea.append(data.quoteText);
-});
 
 //----------------------------------------------------------------------------
 //------------------------------Game------------------------------------------
@@ -45,7 +31,7 @@ var stage = new Container(),
     resize(renderer.view);
 document.body.appendChild(renderer.view);
 loader
-  .add("images/thePath.json")
+  .add("../images/thePath.json")
   .load(setup);
 
 var state, robo, love, nicks, chimes, exit, player, dungeon,
@@ -61,7 +47,7 @@ function setup() {
 
   //Made the sprites and add them to the `gameScene`
   //Created an alias for the texture atlas frame ids
-  id = resources["images/thePath.json"].textures;
+  id = resources["../images/thePath.json"].textures;
   //Dungeon
   dungeon = new Sprite(id["dungeon.png"]);
   gameScene.addChild(dungeon);
@@ -83,10 +69,10 @@ function setup() {
   love.y = gameScene.height / 2 - love.height / 2;
   gameScene.addChild(love);
   //the nicks aka shias
-  var numberOfnicks = 6,
+  var numberOfnicks = 7,
       spacing = 48,
-      xOffset = 130,
-      speed = 0.5,
+      xOffset = 150,
+      speed = 1,
       direction = 1;
 
   nicks = [];
