@@ -1,0 +1,12 @@
+.row1 {
+display: flex;
+text-align: center;
+margin-top: 20%;
+height: 200px;
+width: auto;
+}
+.container button {
+  background: #fffbd5;
+/*background: -webkit-linear-gradient(to right, #fffbd5, #b20a2c);*/
+/*background: linear-gradient(to right, #fffbd5, #b20a2c);*/
+}

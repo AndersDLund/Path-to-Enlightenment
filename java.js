@@ -1,11 +1,11 @@
-let gameArea = $('#gameArea');
-let apiArea = $('#apiArea');
-let body = $('body');
+var gameArea = $('#gameArea');
+var apiArea = $('#apiArea');
+var body = $('body');
 
-let button = $('button');
-let quoteArea = $('#quoteArea');
+var button = $('button');
+var quoteArea = $('#quoteArea');
 
-let lifeCounter = 3;
+var lifeCounter = 3;
 console.log(lifeCounter);
 
 var state, robo, love, nicks, chimes, exit, player, dungeon,
@@ -65,7 +65,7 @@ function setup() {
   //Dungeon
   dungeon = new Sprite(id["dungeon.png"]);
   gameScene.addChild(dungeon);
-  //Ghandi
+  //Ghandi i know i spelt it wrong... smh
   Ghandi = new Sprite(id["Ghandi.png"]);
   Ghandi.position.set(45, 0);
   gameScene.addChild(Ghandi);
@@ -84,7 +84,7 @@ function setup() {
   love.anchor.x = 0.5;
   love.anchor.y = 0.5;
   gameScene.addChild(love);
-  //the nicks aka shias
+  //the nicks aka shias... i was using nick cage before this build.
   var numberOfnicks = 6,
       spacing = 48,
       xOffset = 130,
@@ -151,11 +151,11 @@ function setup() {
       down = keyboard(40);
   //Left arrow key
   left.press = function() {
-    //Change the robo's velocity
+
     robo.vx = -5;
     robo.vy = 0;
   };
-  //Left arrow key `release`
+
   left.release = function() {
 
     //Stop the robo
@@ -223,7 +223,7 @@ function play() {
   contain(robo, {x: 28, y: 10, width: 780, height: 610});
 
   var roboHit = false;
-  //Loop through all the sprites in the `enemies` array
+
   nicks.forEach(function(nick) {
     //Move the nick
     nick.y += nick.vy;
@@ -241,7 +241,7 @@ function play() {
   });
   //If the robo is hit...
   if(roboHit) {
-    //Make the robo semi-transparent
+    //semi-transparent
     robo.alpha = 0.5;
     //Reduce the width of the health bar's inner rectangle by 1 pixel
     healthBar.outer.width -= 0.2;
@@ -255,15 +255,13 @@ function play() {
     love.x = robo.x + 8;
     love.y = robo.y + 8;
   }
-  //Does the robo have enough health? If the width of the `innerBar`
-  //is less than zero, end the game and display "You lost!"
+
   if (healthBar.outer.width < 0) {
     state = end;
     message.text = "You Lose, Loser!";
   }
 
-  //If the robo has brought the love to the exit,
-  //end the game and display "You won!"
+
   if (hitTestRectangle(love, Ghandi)) {
     state = end;
     message.text = "You showed some class out there!"
@@ -309,7 +307,6 @@ function contain(sprite, container) {
 }
 //----------------------------------`hitTestRectangle` function
 function hitTestRectangle(r1, r2) {
-  //Define the variables we'll need to calculate
   var hit, combinedHalfWidths, combinedHalfHeights, vx, vy;
   //hit will determine whether there's a collision
   hit = false;
@@ -377,7 +374,7 @@ function keyboard(keyCode) {
     }
     event.preventDefault();
   };
-  //Attach event listeners
+
   window.addEventListener(
     "keydown", key.downHandler.bind(key), false
   );
@@ -387,6 +384,6 @@ function keyboard(keyCode) {
   return key;
 }
 //------------------------center stage------------------------------
-
+//super hard to move around and doesnt change with the screen
 function resize() {
   renderer.view.style.position = 'absolute';renderer.view.style.left = ((window.innerWidth - renderer.width) >> 1) + 'px';renderer.view.style.top = ((window.innerHeight - renderer.height) >> 1) + 'px';} resize();window.addEventListener('resize', resize);
