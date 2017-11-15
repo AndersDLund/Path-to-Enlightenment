@@ -67,12 +67,15 @@ function setup() {
   love = new Sprite(id["love.png"]);
   love.x = gameScene.width - love.width - 48;
   love.y = gameScene.height / 2 - love.height / 2;
+  love.anchor.x = 0.5;
+  love.anchor.y = 0.5;
   gameScene.addChild(love);
+
   //the nicks aka shias
-  var numberOfnicks = 7,
+  var numberOfnicks = 10,
       spacing = 48,
       xOffset = 150,
-      speed = 1,
+      speed = 1.5,
       direction = 1;
 
   nicks = [];
@@ -189,6 +192,7 @@ function setup() {
 function gameLoop(){
   //Loop this function 60 times per second
   requestAnimationFrame(gameLoop);
+  love.rotation += 0.05;
   //Update the current game state
   state();
   //Render the stage
@@ -210,7 +214,7 @@ function play() {
     //Move the nick
     nick.y += nick.vy;
     //Check the nick's boundaries
-    var nickHitsWall = contain(nick, {x: 28, y: 10, width: 790, height: 640});
+    var nickHitsWall = contain(nick, {x: 28, y: 10, width: 790, height: 610});
     //If the nick hits the top or bottom of the stage, reverse
     //its direction
     if (nickHitsWall === "top" || nickHitsWall === "bottom") {
@@ -226,7 +230,7 @@ function play() {
     //Make the robo semi-transparent
     robo.alpha = 0.5;
     //Reduce the width of the health bar's inner rectangle by 1 pixel
-    healthBar.outer.width -= 4;
+    healthBar.outer.width -= 1;
   } else {
     //Make the robo fully opaque (non-transparent) if it hasn't been hit
     robo.alpha = 1;
@@ -248,7 +252,7 @@ function play() {
   //end the game and display "You won!"
   if (hitTestRectangle(love, Ghandi)) {
     state = end;
-    message.text = "You Have Reached Enlightenment!"
+    message.text = "Not bad... but Gandhi needs more love!"
   }
 }
 

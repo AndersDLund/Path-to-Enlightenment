@@ -24,6 +24,7 @@ var Container = PIXI.Container,
     Sprite = PIXI.Sprite,
     Text = PIXI.Text,
     Graphics = PIXI.Graphics;
+    
 //Created Pixi stage and renderer and added the
 //renderer.view to the DOM
 var stage = new Container(),
@@ -52,9 +53,9 @@ function setup() {
   dungeon = new Sprite(id["dungeon.png"]);
   gameScene.addChild(dungeon);
   //Ghandi
-  Ghandi = new Sprite(id["Ghandi.png"]);
-  Ghandi.position.set(45, 0);
-  gameScene.addChild(Ghandi);
+  // Ghandi = new Sprite(id["Ghandi.png"]);
+  // Ghandi.position.set(45, 0);
+  // gameScene.addChild(Ghandi);
   //robo
   robo = new Sprite(id["robo.png"]);
   robo.x = 63;
@@ -67,14 +68,12 @@ function setup() {
   love = new Sprite(id["love.png"]);
   love.x = gameScene.width - love.width - 48;
   love.y = gameScene.height / 2 - love.height / 2;
-  love.anchor.x = 0.5;
-  love.anchor.y = 0.5;
   gameScene.addChild(love);
   //the nicks aka shias
-  var numberOfnicks = 13,
-      spacing = 48,
-      xOffset = 120,
-      speed = 4.5,
+  var numberOfnicks = 1,
+      spacing = 5,
+      xOffset = 400,
+      speed = 1,
       direction = 1;
 
   nicks = [];
@@ -84,12 +83,15 @@ function setup() {
     //Make a nick
     var nick = new Sprite(id["nick.png"]);
     //Space each nick horizontally
-    var x = spacing * i + xOffset;
+    var x = gameScene.width / 2
     //Give the nick a random y position
-    var y = randomInt(0, stage.height - nick.height);
+    var y = gameScene.height / 2
     //Set the nick's position
     nick.x = x;
     nick.y = y;
+    nick.scale.x = 9;
+    nick.scale.y = 9;
+
     //Set the nick's vertical velocity.
     nick.vy = speed * direction;
     //Reverse the direction for the next nick
@@ -191,8 +193,6 @@ function setup() {
 function gameLoop(){
   //Loop this function 60 times per second
   requestAnimationFrame(gameLoop);
-  love.rotation += 0.05;
-  //Update the current game state
   state();
   //Render the stage
   renderer.render(stage);
@@ -213,7 +213,7 @@ function play() {
     //Move the nick
     nick.y += nick.vy;
     //Check the nick's boundaries
-    var nickHitsWall = contain(nick, {x: 28, y: 10, width: 790, height: 640});
+    var nickHitsWall = contain(nick, {x: 28, y: 10, width: 790, height: 620});
     //If the nick hits the top or bottom of the stage, reverse
     //its direction
     if (nickHitsWall === "top" || nickHitsWall === "bottom") {
@@ -229,7 +229,7 @@ function play() {
     //Make the robo semi-transparent
     robo.alpha = 0.5;
     //Reduce the width of the health bar's inner rectangle by 1 pixel
-    healthBar.outer.width -= 4;
+    healthBar.outer.width -= 10;
   } else {
     //Make the robo fully opaque (non-transparent) if it hasn't been hit
     robo.alpha = 1;
@@ -244,15 +244,15 @@ function play() {
   //is less than zero, end the game and display "You lost!"
   if (healthBar.outer.width < 0) {
     state = end;
-    message.text = "You Lose, Loser!";
+    message.text = "Enlightenment is not a game...";
   }
 
   //If the robo has brought the love to the exit,
   //end the game and display "You won!"
-  if (hitTestRectangle(love, Ghandi)) {
-    state = end;
-    message.text = "You're so close to enlightenment"
-  }
+  // if (hitTestRectangle(love, Ghandi)) {
+  //   state = end;
+  //   message.text = "Enlightenment is not a game..."
+  // }
 }
 
 

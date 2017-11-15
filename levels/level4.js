@@ -67,12 +67,14 @@ function setup() {
   love = new Sprite(id["love.png"]);
   love.x = gameScene.width - love.width - 48;
   love.y = gameScene.height / 2 - love.height / 2;
+  love.anchor.x = 0.5;
+  love.anchor.y = 0.5;
   gameScene.addChild(love);
   //the nicks aka shias
-  var numberOfnicks = 7,
+  var numberOfnicks = 12,
       spacing = 48,
-      xOffset = 150,
-      speed = 1,
+      xOffset = 120,
+      speed = 3.5,
       direction = 1;
 
   nicks = [];
@@ -189,6 +191,7 @@ function setup() {
 function gameLoop(){
   //Loop this function 60 times per second
   requestAnimationFrame(gameLoop);
+  love.rotation += 0.05;
   //Update the current game state
   state();
   //Render the stage
@@ -202,7 +205,7 @@ function play() {
   robo.x += robo.vx;
   robo.y += robo.vy;
   //Contain the robo inside the area of the dungeon
-  contain(robo, {x: 28, y: 10, width: 780, height: 630});
+  contain(robo, {x: 28, y: 10, width: 780, height: 610});
 
   var roboHit = false;
   //Loop through all the sprites in the `enemies` array
@@ -226,7 +229,7 @@ function play() {
     //Make the robo semi-transparent
     robo.alpha = 0.5;
     //Reduce the width of the health bar's inner rectangle by 1 pixel
-    healthBar.outer.width -= 4;
+    healthBar.outer.width -= 3;
   } else {
     //Make the robo fully opaque (non-transparent) if it hasn't been hit
     robo.alpha = 1;
@@ -248,7 +251,7 @@ function play() {
   //end the game and display "You won!"
   if (hitTestRectangle(love, Ghandi)) {
     state = end;
-    message.text = "You Have Reached Enlightenment!"
+    message.text = "This is starting to get dangerous!"
   }
 }
 

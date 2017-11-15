@@ -67,12 +67,14 @@ function setup() {
   love = new Sprite(id["love.png"]);
   love.x = gameScene.width - love.width - 48;
   love.y = gameScene.height / 2 - love.height / 2;
+  love.anchor.x = 0.5;
+  love.anchor.y = 0.5;
   gameScene.addChild(love);
   //the nicks aka shias
-  var numberOfnicks = 7,
-      spacing = 48,
-      xOffset = 150,
-      speed = 1,
+  var numberOfnicks = 115,
+      spacing = 5,
+      xOffset = 120,
+      speed = 30,
       direction = 1;
 
   nicks = [];
@@ -189,6 +191,7 @@ function setup() {
 function gameLoop(){
   //Loop this function 60 times per second
   requestAnimationFrame(gameLoop);
+  love.rotation += 0.05;
   //Update the current game state
   state();
   //Render the stage
@@ -202,7 +205,7 @@ function play() {
   robo.x += robo.vx;
   robo.y += robo.vy;
   //Contain the robo inside the area of the dungeon
-  contain(robo, {x: 28, y: 10, width: 780, height: 630});
+  contain(robo, {x: 28, y: 10, width: 830, height: 700});
 
   var roboHit = false;
   //Loop through all the sprites in the `enemies` array
@@ -210,7 +213,7 @@ function play() {
     //Move the nick
     nick.y += nick.vy;
     //Check the nick's boundaries
-    var nickHitsWall = contain(nick, {x: 28, y: 10, width: 790, height: 640});
+    var nickHitsWall = contain(nick, {x: 28, y: 10, width: 790, height: 620});
     //If the nick hits the top or bottom of the stage, reverse
     //its direction
     if (nickHitsWall === "top" || nickHitsWall === "bottom") {
@@ -226,7 +229,7 @@ function play() {
     //Make the robo semi-transparent
     robo.alpha = 0.5;
     //Reduce the width of the health bar's inner rectangle by 1 pixel
-    healthBar.outer.width -= 4;
+    healthBar.outer.width -= 10;
   } else {
     //Make the robo fully opaque (non-transparent) if it hasn't been hit
     robo.alpha = 1;
@@ -248,7 +251,7 @@ function play() {
   //end the game and display "You won!"
   if (hitTestRectangle(love, Ghandi)) {
     state = end;
-    message.text = "You Have Reached Enlightenment!"
+    message.text = "Whoa, what's that up ahead?!"
   }
 }
 
