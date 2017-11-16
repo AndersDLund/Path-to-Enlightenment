@@ -6,7 +6,12 @@ height: 200px;
 width: auto;
 }
 .container button {
-  background: #fffbd5;
+  background-color: #fffbd5;
 /*background: -webkit-linear-gradient(to right, #fffbd5, #b20a2c);*/
 /*background: linear-gradient(to right, #fffbd5, #b20a2c);*/
+}
+body {
+  background: #ffafbd; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffafbd, #ffc3a0); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffafbd, #ffc3a0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

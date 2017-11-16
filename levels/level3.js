@@ -63,6 +63,15 @@ function setup() {
   robo.vy = 0;
   gameScene.addChild(robo);
 
+  //weirdnick
+
+  weirdnick = new Sprite(id["nick.png"]);
+  weirdnick.x = gameScene.width / 2;
+  weirdnick.y = gameScene.height / 2;
+  weirdnick.anchor.x = 1;
+  weirdnick.anchor.y = 1;
+  gameScene.addChild(weirdnick);
+
   //love
   love = new Sprite(id["love.png"]);
   love.x = gameScene.width - love.width - 48;
@@ -81,6 +90,7 @@ function setup() {
 
   //Make as many nicks as there are `numberOfnicks`
   for (var i = 0; i < numberOfnicks; i++) {
+    speed = randomInt(1, 3)
     //Make a nick
     var nick = new Sprite(id["nick.png"]);
     //Space each nick horizontally
@@ -192,6 +202,7 @@ function gameLoop(){
   //Loop this function 60 times per second
   requestAnimationFrame(gameLoop);
   love.rotation += 0.05;
+  weirdnick.rotation += 0.2;
   //Update the current game state
   state();
   //Render the stage
@@ -221,6 +232,8 @@ function play() {
     }
     //Test for a collision
     if(hitTestRectangle(robo, nick)) {
+      roboHit = true;
+    } else if (hitTestRectangle(robo, weirdnick)) {
       roboHit = true;
     }
   });
@@ -315,9 +328,9 @@ function hitTestRectangle(r1, r2) {
   combinedHalfWidths = r1.halfWidth + r2.halfWidth;
   combinedHalfHeights = r1.halfHeight + r2.halfHeight;
   //Check for a collision on the x axis
-  if (Math.abs(vx) < combinedHalfWidths) {
+  if (Math.abs(vx) < combinedHalfWidths - 10) {
     //A collision might be occuring. Check for a collision on the y axis
-    if (Math.abs(vy) < combinedHalfHeights) {
+    if (Math.abs(vy) < combinedHalfHeights - 10) {
       //There's definitely a collision happening
       hit = true;
     } else {

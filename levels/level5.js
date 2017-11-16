@@ -81,6 +81,7 @@ function setup() {
 
   //Make as many nicks as there are `numberOfnicks`
   for (var i = 0; i < numberOfnicks; i++) {
+    speed = randomInt(4, 7)
     //Make a nick
     var nick = new Sprite(id["nick.png"]);
     //Space each nick horizontally
@@ -315,9 +316,9 @@ function hitTestRectangle(r1, r2) {
   combinedHalfWidths = r1.halfWidth + r2.halfWidth;
   combinedHalfHeights = r1.halfHeight + r2.halfHeight;
   //Check for a collision on the x axis
-  if (Math.abs(vx) < combinedHalfWidths) {
+  if (Math.abs(vx) < combinedHalfWidths - 10) {
     //A collision might be occuring. Check for a collision on the y axis
-    if (Math.abs(vy) < combinedHalfHeights) {
+    if (Math.abs(vy) < combinedHalfHeights - 10) {
       //There's definitely a collision happening
       hit = true;
     } else {

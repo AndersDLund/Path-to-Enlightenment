@@ -70,6 +70,29 @@ function setup() {
   love.anchor.x = 0.5;
   love.anchor.y = 0.5;
   gameScene.addChild(love);
+  //spin nicks
+
+  weirdnick = new Sprite(id["nick.png"]);
+  weirdnick.x = gameScene.width / 2;
+  weirdnick.y = gameScene.height / 4;
+  weirdnick.anchor.x = 1;
+  weirdnick.anchor.y = 1;
+  gameScene.addChild(weirdnick);
+
+  weirdnick1 = new Sprite(id["nick.png"]);
+  weirdnick1.x = gameScene.width / 2;
+  weirdnick1.y = gameScene.height - 150;
+  weirdnick1.anchor.x = 1;
+  weirdnick1.anchor.y = 1;
+  gameScene.addChild(weirdnick1);
+
+//spin nicks
+  weirdnick2 = new Sprite(id["nick.png"]);
+  weirdnick2.x = gameScene.width - love.width - 40;
+  weirdnick2.y = gameScene.height / 2 - love.height / 2;
+  weirdnick2.anchor.x = 1;
+  weirdnick2.anchor.y = 1;
+  gameScene.addChild(weirdnick2);
   //the nicks aka shias
   var numberOfnicks = 12,
       spacing = 48,
@@ -81,6 +104,7 @@ function setup() {
 
   //Make as many nicks as there are `numberOfnicks`
   for (var i = 0; i < numberOfnicks; i++) {
+    speed = randomInt(2, 4)
     //Make a nick
     var nick = new Sprite(id["nick.png"]);
     //Space each nick horizontally
@@ -192,6 +216,9 @@ function gameLoop(){
   //Loop this function 60 times per second
   requestAnimationFrame(gameLoop);
   love.rotation += 0.05;
+  weirdnick.rotation -=.2
+  weirdnick1.rotation -=-.2
+  weirdnick2.rotation -=.2
   //Update the current game state
   state();
   //Render the stage
@@ -221,6 +248,12 @@ function play() {
     }
     //Test for a collision
     if(hitTestRectangle(robo, nick)) {
+      roboHit = true;
+    } else if (hitTestRectangle(robo, weirdnick)) {
+      roboHit = true;
+    }  else if (hitTestRectangle(robo, weirdnick2)) {
+      roboHit = true;
+    } else if (hitTestRectangle(robo, weirdnick1)) {
       roboHit = true;
     }
   });
@@ -315,9 +348,9 @@ function hitTestRectangle(r1, r2) {
   combinedHalfWidths = r1.halfWidth + r2.halfWidth;
   combinedHalfHeights = r1.halfHeight + r2.halfHeight;
   //Check for a collision on the x axis
-  if (Math.abs(vx) < combinedHalfWidths) {
+  if (Math.abs(vx) < combinedHalfWidths - 10) {
     //A collision might be occuring. Check for a collision on the y axis
-    if (Math.abs(vy) < combinedHalfHeights) {
+    if (Math.abs(vy) < combinedHalfHeights - 10) {
       //There's definitely a collision happening
       hit = true;
     } else {

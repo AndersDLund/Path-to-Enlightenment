@@ -327,9 +327,9 @@ function hitTestRectangle(r1, r2) {
   combinedHalfWidths = r1.halfWidth + r2.halfWidth;
   combinedHalfHeights = r1.halfHeight + r2.halfHeight;
   //Check for a collision on the x axis
-  if (Math.abs(vx) < combinedHalfWidths) {
+  if (Math.abs(vx) < combinedHalfWidths - 5) {
     //A collision might be occuring. Check for a collision on the y axis
-    if (Math.abs(vy) < combinedHalfHeights) {
+    if (Math.abs(vy) < combinedHalfHeights - 5) {
       //There's definitely a collision happening
       hit = true;
     } else {
