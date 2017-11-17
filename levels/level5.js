@@ -81,7 +81,7 @@ function setup() {
 
   //Make as many nicks as there are `numberOfnicks`
   for (var i = 0; i < numberOfnicks; i++) {
-    speed = randomInt(4, 7)
+    speed = randomInt(4, 9)
     //Make a nick
     var nick = new Sprite(id["nick.png"]);
     //Space each nick horizontally

@@ -24,6 +24,9 @@ $xhr.done(function(data) {
     quoteArea.append(data.quoteText);
 });
 
+
+
+
 //----------------------------------------------------------------------------
 //------------------------------Game------------------------------------------
 //----------------------------------------------------------------------------
@@ -52,12 +55,14 @@ var state, robo, love, nicks, chimes, exit, player, dungeon,
     Ghandi, healthBar, message, gameScene, gameOverScene, enemies, id, apiQuote;
 
 
+
 //----------------------------------setup function--------------------------
 
 function setup() {
   //Made the game scene and add it to the stage
   gameScene = new Container();
   stage.addChild(gameScene);
+
 
   //Made the sprites and add them to the `gameScene`
   //Created an alias for the texture atlas frame ids
@@ -86,8 +91,8 @@ function setup() {
   gameScene.addChild(love);
   //the nicks aka shias... i was using nick cage before this build.
   var numberOfnicks = 6,
-      spacing = 48,
-      xOffset = 130,
+      spacing = 90,
+      xOffset = 160,
       speed = 0.5,
       direction = 1;
 

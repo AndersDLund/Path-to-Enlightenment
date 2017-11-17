@@ -44,6 +44,7 @@ function setup() {
   //Made the game scene and add it to the stage
   gameScene = new Container();
   stage.addChild(gameScene);
+  
 
   //Made the sprites and add them to the `gameScene`
   //Created an alias for the texture atlas frame ids

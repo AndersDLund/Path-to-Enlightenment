@@ -68,8 +68,8 @@ function setup() {
   weirdnick = new Sprite(id["nick.png"]);
   weirdnick.x = gameScene.width / 2;
   weirdnick.y = gameScene.height / 2;
-  weirdnick.anchor.x = 1;
-  weirdnick.anchor.y = 1;
+  weirdnick.anchor.x = 2;
+  weirdnick.anchor.y = 2;
   gameScene.addChild(weirdnick);
 
   //love

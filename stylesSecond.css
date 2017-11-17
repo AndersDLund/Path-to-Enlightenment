@@ -7,8 +7,6 @@ width: auto;
 }
 .container button {
   background-color: #fffbd5;
-/*background: -webkit-linear-gradient(to right, #fffbd5, #b20a2c);*/
-/*background: linear-gradient(to right, #fffbd5, #b20a2c);*/
 }
 body {
   background: #ffafbd; /* fallback for old browsers */
