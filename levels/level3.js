@@ -266,6 +266,13 @@ function play() {
     state = end;
     message.text = "Shia's not going to like this..."
   }
+  if (hitTestRectangle(robo, Ghandi)) {
+    if (healthBar.outer.width < 128) {
+
+
+    healthBar.outer.width += 0.2;
+  }
+  }
 }
 
 

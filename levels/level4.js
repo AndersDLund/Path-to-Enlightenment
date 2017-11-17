@@ -286,6 +286,13 @@ function play() {
     state = end;
     message.text = "This is starting to get dangerous!"
   }
+  if (hitTestRectangle(robo, Ghandi)) {
+    if (healthBar.outer.width < 128) {
+
+
+    healthBar.outer.width += 0.2;
+  }
+  }
 }
 
 

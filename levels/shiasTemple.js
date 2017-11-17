@@ -253,6 +253,13 @@ function play() {
     state = end;
     message.text = "Whoa, what's that up ahead?!"
   }
+  if (hitTestRectangle(robo, Ghandi)) {
+    if (healthBar.outer.width < 128) {
+
+
+    healthBar.outer.width += 0.2;
+  }
+  }
 }
 
 

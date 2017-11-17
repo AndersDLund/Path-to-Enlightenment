@@ -44,7 +44,7 @@ function setup() {
   //Made the game scene and add it to the stage
   gameScene = new Container();
   stage.addChild(gameScene);
-  
+
 
   //Made the sprites and add them to the `gameScene`
   //Created an alias for the texture atlas frame ids
@@ -254,6 +254,13 @@ function play() {
   if (hitTestRectangle(love, Ghandi)) {
     state = end;
     message.text = "Not bad... but Gandhi needs more love!"
+  }
+  if (hitTestRectangle(robo, Ghandi)) {
+    if (healthBar.outer.width < 128) {
+
+
+    healthBar.outer.width += 0.2;
+  }
   }
 }
 
